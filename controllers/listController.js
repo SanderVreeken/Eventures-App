@@ -5,8 +5,6 @@ const constants = require('../constants');
 
 const today = new Date();
 
-// mongoose.connect(process.env._MONGODB_BASE_URL, { useNewUrlParser: true } );
-
 exports.list = async (req, res) => {
 
     const requestYear = Number(req.params.year);

@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const excelNode = require('excel4node')
 const promisify = require('es6-promisify');
 
@@ -7,8 +6,6 @@ const constants = require('../constants');
 
 const today = new Date();
 const todaysDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-
-// mongoose.connect(process.env._MONGODB_BASE_URL, { useNewUrlParser: true } );
 
 exports.start = (req, res) => {
 

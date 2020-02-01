@@ -1,11 +1,9 @@
-const mongoose = require('mongoose');
+
 
 const Event = require('../models/Event')
 const constants = require('../constants');
 
 const today = new Date();
-
-// mongoose.connect(process.env._MONGODB_BASE_URL, { useNewUrlParser: true } );
 
 exports.graph = async (req, res) => {
 

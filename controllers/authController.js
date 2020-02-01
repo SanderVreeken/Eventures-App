@@ -1,10 +1,7 @@
-const mongoose = require('mongoose');
 const promisify = require('es6-promisify');
 const passport = require('passport');
 
 const User = require('../models/User')
-
-// mongoose.connect(process.env._MONGODB_BASE_URL, { useNewUrlParser: true } );
 
 exports.logoinForm = (req, res) => {
     res.render('login');
