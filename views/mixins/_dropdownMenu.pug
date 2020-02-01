@@ -1,0 +1,9 @@
+mixin dropdownMenu(user)
+    .dropdown
+        button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')= user.name
+        .dropdown-menu(aria-labelledby='dropdownMenuButton')
+            a.dropdown-item(href='/logout') Logout
+
+
+
+    

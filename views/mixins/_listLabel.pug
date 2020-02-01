@@ -1,0 +1,8 @@
+mixin listLabel(text, color)
+    - if (color == 0)
+        .box-label.secondary-list-color
+            p.label.center.small-top-bottom.margin= text
+    - else 
+        .box-label
+            p.label.center.small-top-bottom.margin= text
+        

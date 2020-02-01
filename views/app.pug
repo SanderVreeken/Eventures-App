@@ -1,0 +1,33 @@
+extends layout
+
+include mixins/_arrowCard
+include mixins/_dropdownMenu
+include mixins/_headerLabel
+include mixins/_informationCard
+
+block header-buttons
+    +dropdownMenu(user)
+
+block subheader
+    .subheader.blue
+        .box-arrow-month
+            .box-arrow
+                +arrowCard(headerTitles[0], '<')
+                +arrowCard(headerTitles[0], '>')
+            p.label.light.label-month= `${monthsAbbreviated[requestMonth - 1]} ${requestYear}`
+
+block content
+    .box-canvas.app
+        .canvas.full.application
+            .box-app
+                - for(a = 0; a < 7; a++)
+                    +headerLabel(weekDays)
+                - for(b = 0; b < firstWeekday; b++)
+                    +informationCard(false, true, (numberOfDaysMonthBefore - (firstWeekday - b)))
+                - for(c = 0; c < numberOfDaysMonth; c++)
+                    +informationCard(true, nil, nil)
+                - for(d = 0; d < (42 - (firstWeekday + numberOfDaysMonth)); d++)
+                    +informationCard(false, false, nil)
+
+
+                    

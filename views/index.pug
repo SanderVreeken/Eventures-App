@@ -1,0 +1,18 @@
+extends layout
+
+block header-buttons
+    a(href="/login" class="link-login")
+        p.button-text.dark.login-button-index LOGIN
+    a(href="/register")
+        .button.small.blue  
+            p.button-text.light SIGN UP
+
+block content
+    .grid-index
+        .box-titles
+            p.hero.name Eventures
+            p.title Don’t miss out, list upcoming events.
+            p.subtitle Eventures is an easy-to-use web application, listing all events happening in the Amsterdam. Check, download and use all the infromation available free of charge.
+            .button.large.blue
+                a(href="/register")
+                    p.button-text.light GET STARTED NOW

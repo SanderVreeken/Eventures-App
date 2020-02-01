@@ -1,0 +1,9 @@
+mixin headerCard(pageTitles, current)
+    a(href=`http://localhost:7777/${pageTitles[a]}/${requestYear}/${requestMonth}`) 
+        .header-card
+            - if (pageTitles[a] == current)
+                p.label= pageTitles[a].charAt(0).toUpperCase() + pageTitles[a].substring(1)
+                .current-indicator.blue
+            - else
+                p.label.text-faded= pageTitles[a].charAt(0).toUpperCase() + pageTitles[a].substring(1)
+                .current-indicator.inactive-indicator

@@ -1,0 +1,12 @@
+mixin loginForm()
+    .box-fields
+        form(action="/login" method="POST")
+            .box-email
+                p.label.auth-label Email
+                input(type="email" name="email").text-field
+            .box-password
+                p.label.auth-label Password
+                input(type="password" name="password").text-field
+            .button.large.blue.login-button-login
+                input(type="submit" value="LOGIN").submit.button-text.light
+                

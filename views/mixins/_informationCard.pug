@@ -1,0 +1,43 @@
+mixin informationCard(active, before, number)
+    .box-information
+        .box-day-information
+            - if (active == false)
+                - if (before == true)
+                    p.label= number + 1
+                - else 
+                    p.label= d + 1
+            - else
+                .box-header-information-card
+                    p.label= c + 1 
+                    - if (preparedHolidays[c].title.length > 0)
+                        img.flag(src='/images/flags/netherlands.png', alt='flag')
+        - if (active == false)
+            .information-card.inactive
+        - else 
+            .information-card.active
+                - if(preparedEvents[c].title.length > 0)
+                    a(href=`/list/${requestYear}/${requestMonth}`)
+                        .information-card-events.total-number(role='button' data-toggle='popover')
+                            - if(preparedEvents[c].title.length > 1)
+                                p.label.light= `${preparedEvents[c].title.length} EVENTS`
+                            - else
+                                p.label.light= `${preparedEvents[c].title.length} EVENT`
+                    .information-card-events.new-number
+                        p.sublabel.light NO NEW EVENTS
+
+            
+        
+                    
+        
+            
+        
+
+
+
+            
+
+
+
+
+
+

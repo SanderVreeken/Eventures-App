@@ -1,0 +1,28 @@
+extends layout
+
+include mixins/_arrowCard
+include mixins/_headerLabel
+include mixins/_listLabel
+
+block subheader
+    .subheader.blue
+        .box-arrow-month
+            .box-arrow
+                +arrowCard(headerTitles[1], '<')
+                +arrowCard(headerTitles[1], '>')
+            p.label.light.label-month= `${monthsAbbreviated[requestMonth - 1]} ${requestYear}` 
+        .box-advanced-buttons
+            a(href=`/excel/${requestYear}/${requestMonth}`)
+                img(src="/images/excel.png", alt="Button Excel")
+
+block content
+    .box-canvas.app
+        .canvas.full.application
+            .box-list
+                - for(a = 0; a < 3; a++)
+                    +headerLabel(['Date', 'Event', 'Location'])
+                - for(b = 0; b < events.length; b++)
+                        +listLabel((events[b].beginDay + ' ' + events[b].beginMonth + ' ' + events[b].beginYear), b % 2)
+                        +listLabel(events[b].title, b % 2) 
+                        +listLabel(events[b].location, b % 2)
+

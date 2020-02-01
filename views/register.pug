@@ -1,0 +1,13 @@
+extends layout
+
+include mixins/_registerForm
+
+block header-buttons
+    a(href="/login")
+        .button.small.blue  
+            p.button-text.light LOGIN
+
+block content
+    .box-canvas.auth
+        .canvas
+            +registerForm()    

@@ -1,0 +1,20 @@
+mixin arrowCard(page, arrow)
+    - if (arrow == '<')
+        - if (requestMonth == 1)
+            a(href=`/${page}/${requestYear - 1}/12`)
+                .arrow-card.highlighted-color
+                    p.button-text.light= arrow
+        - else
+            a(href=`/${page}/${requestYear}/${requestMonth - 1}`)
+                .arrow-card.highlighted-color
+                    p.button-text.light= arrow
+    - if (arrow == '>')
+        - if (requestMonth == 12)
+            a(href=`/${page}/${requestYear + 1}/1`)
+                .arrow-card.highlighted-color
+                    p.button-text.light= arrow
+        - else 
+            a(href=`/${page}/${requestYear}/${requestMonth + 1}`)  
+                .arrow-card.highlighted-color
+                    p.button-text.light= arrow
+        

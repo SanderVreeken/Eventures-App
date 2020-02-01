@@ -1,0 +1,18 @@
+mixin registerForm()
+    .box-fields
+        form(action="/register" method="POST")
+            .box-email
+                p.label.auth-label Email
+                input(type="email" name="email").text-field
+            .box-username
+                p.label.auth-label Name
+                input(type="text" name="name").text-field
+            .box-password
+                p.label.auth-label Password
+                input(type="password" name="password").text-field
+            .box-password
+                p.label.auth-label Repeat Password
+                input(type="password" name="password-confirm").text-field
+            .button.large.blue.login-button-login
+                input(type="submit" value="REGISTER").submit.button-text.light
+            p.sublabel.terms By registering for Eventures you agree with the Terms of Service and the Privacy Agreement. We will occasionally send you account related emails.

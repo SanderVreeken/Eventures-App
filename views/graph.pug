@@ -1,0 +1,18 @@
+extends layout
+
+include mixins/_arrowCard 
+
+block subheader
+    .subheader.blue
+        .box-arrow-month
+            .box-arrow
+                +arrowCard(headerTitles[2], '<')
+                +arrowCard(headerTitles[2], '>')
+            p.label.light.label-month= `${monthsAbbreviated[requestMonth - 1]} ${requestYear}`
+
+block content
+    .box-canvas.app
+        .canvas.full.application.main-background-color(id="box-chart")
+            canvas(id="chart")
+
+    
