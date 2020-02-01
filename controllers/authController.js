@@ -2,7 +2,6 @@ const promisify = require('es6-promisify');
 const passport = require('passport');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
-// const User = require('../models/User')
 
 exports.loginForm = (req, res) => {
     res.render('login');

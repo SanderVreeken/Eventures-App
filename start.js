@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config({ path: '.env' });
 
-mongoose.connect(process.env._MONGODB_BASE_URL);
+mongoose.connect(process.env._MONGODB_BASE_URL, { useNewUrlParser: true } );
 mongoose.Promise = global.Promise;
 mongoose.connection.on('error', (err) => {
   console.error(err);

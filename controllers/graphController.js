@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Event = mongoose.model('Event');
-// const Event = require('../models/Event')
 
 const constants = require('../constants');
 

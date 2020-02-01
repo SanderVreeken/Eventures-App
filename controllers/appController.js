@@ -2,7 +2,6 @@ const excelNode = require('excel4node')
 const promisify = require('es6-promisify');
 const mongoose = require('mongoose');
 const Event = mongoose.model('Event');
-// const Event = require('../models/Event')
 
 const constants = require('../constants');
 
