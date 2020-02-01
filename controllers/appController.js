@@ -8,6 +8,8 @@ const constants = require('../constants');
 const today = new Date();
 const todaysDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 
+// Internal Server Error
+
 exports.start = (req, res) => {
 
     // Redirect to the actual app page whereby month one is January.
