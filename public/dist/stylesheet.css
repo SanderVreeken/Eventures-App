@@ -6,6 +6,9 @@
     --main-inactive-color: RGBA(216, 216, 216, 0.32);
     --main-second-list-color: #F3F8FA;
 
+    --main-flash-success: #28B346;
+    --main-flash-error: #E6260A;
+
     --main-font-color: black;
     --main-font-faded: #999999;
     --main-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -43,7 +46,7 @@ button:focus {
 }
 
 .canvas {
-    margin-top: 38px;
+    margin-top: 18px;
     background-color: var(--main-header-color);
     width: 308px;
 }
@@ -94,6 +97,15 @@ button:focus {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.flash {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 40px;
 }
 
 .flag {
@@ -213,6 +225,21 @@ button:focus {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+.box-flash-card {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 4vw auto 4vw;
+    grid-template-rows: 1fr;
+}
+
+.box-flash-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: 1/2/2/3;
 }
 
 .grid-index {
@@ -366,7 +393,40 @@ button:focus {
     justify-content: flex-end;
 }
 
+.box-flashes {
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.flash-messages {
+    width: 91vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .submit {
     background-color: var(--main-second-color);
     border: none;
 }
+
+.flash-success {
+    background-color: var(--main-second-color);
+}
+
+.flash-error {
+    background-color: var(--main-second-color);
+}
+
+.button-flash-remove {
+    background-color: transparent;
+    grid-area: 1/3/2/4;
+}
+
+.flash-text {
+    margin: 0px;
+}
+

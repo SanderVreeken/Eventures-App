@@ -6,5 +6,4 @@ exports.index = (req, res) => {
     } else {
         res.render('index');
     }
-    res.render('index');
 };
