@@ -8,7 +8,7 @@ const constants = require('../constants');
 const today = new Date();
 const todaysDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 
-mongoose.connect(process.env._MONGODB_BASE_URL, { useNewUrlParser: true } );
+// mongoose.connect(process.env._MONGODB_BASE_URL, { useNewUrlParser: true } );
 
 exports.start = (req, res) => {
 
