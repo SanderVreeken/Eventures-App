@@ -22,7 +22,12 @@ block content
                 - for(a = 0; a < 3; a++)
                     +headerLabel(['Date', 'Event', 'Location'])
                 - for(b = 0; b < events.length; b++)
-                        +listLabel((events[b].beginDay + ' ' + events[b].beginMonth + ' ' + events[b].beginYear), b % 2)
+                        - if (events[b].beginDay == events[b].endDay && events[b].beginMonth == events[b].endMonth)
+                            +listLabel((events[b].beginDay + ' ' + events[b].beginMonth + ' ' + events[b].beginYear), b % 2)
+                        - else if (events[b].beginMonth == events[b].endMonth)
+                            +listLabel((events[b].beginDay + ' - ' + events[b].endDay + ' ' + events[b].beginMonth + ' ' + events[b].beginYear), b % 2)
+                        - else 
+                            +listLabel((events[b].beginDay + ' ' + events[b].beginMonth + ' - ' + events[b].endDay + ' ' + events[b].endMonth + ' ' + events[b].beginYear), b % 2)
                         +listLabel(events[b].title, b % 2) 
                         +listLabel(events[b].location, b % 2)
 

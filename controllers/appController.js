@@ -8,8 +8,6 @@ const constants = require('../constants');
 const today = new Date();
 const todaysDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 
-// Internal Server Error
-
 exports.start = (req, res) => {
 
     // Redirect to the actual app page whereby month one is January.
@@ -29,7 +27,11 @@ exports.app = async (req, res) => {
     const preparedHolidays = prepareEvents(numberOfDaysMonth, holidays);
     const events = await Event.find( { beginYear: requestYear, beginMonth: constants._MONTHS_ABBREVIATED[requestMonth - 1], created: { $gte: todaysDate }, location: { $ne: "Public-Holidays-NL" } });
     // created: {$gte: todaysDate}
-    const preparedEvents = prepareEvents(numberOfDaysMonth, events);
+
+    const lastMonthEvents = await Event.find( { beginYear: requestYear, beginMonth: constants._MONTHS_ABBREVIATED[requestMonth - 2], created: { $gte: todaysDate }, location: { $ne: "Public-Holidays-NL" } });
+    const nextMonthEvents = await Event.find( { beginYear: requestYear, beginMonth: constants._MONTHS_ABBREVIATED[requestMonth], created: { $gte: todaysDate }, location: { $ne: "Public-Holidays-NL" } });
+
+    const preparedEvents = prepareEvents(numberOfDaysMonth, events)
 
     res.render('app', { pageName: 'app', headerTitles: ['app', 'list'], preparedHolidays, preparedEvents, user: req.user, monthsAbbreviated: constants._MONTHS_ABBREVIATED, weekDays: constants._WEEKDAYS, today, requestYear, requestMonth, numberOfDaysMonth, numberOfDaysMonthBefore, firstWeekday, monthsEnglish: constants._MONTHS_ENGLISH } );
 };
@@ -81,7 +83,7 @@ var prepareEvents = function(numberOfDaysMonth, events) {
     }
 
     for (b = 0; b < events.length; b++) {
-        if(events[b].beginYear == events[b].endYear && events[b].beginMonth == events[b].endMonth && events[b].beginDay == events[b].endDay) {
+        if((events[b].beginYear == events[b].endYear) && (events[b].beginMonth == events[b].endMonth) && (events[b].beginDay == events[b].endDay)) {
             data[events[b].beginDay - 1].title.push(events[b].title);
             data[events[b].beginDay - 1].beginYear.push(events[b].beginYear);
             data[events[b].beginDay - 1].beginMonth.push(events[b].beginMonth);
@@ -91,6 +93,30 @@ var prepareEvents = function(numberOfDaysMonth, events) {
             data[events[b].beginDay - 1].endDay.push(events[b].endDay);
             data[events[b].beginDay - 1].created.push(events[b].created);
             data[events[b].beginDay - 1].location.push(events[b].location);
+        } else if((events[b].beginYear == events[b].endYear) && (events[b].beginMonth == events[b].endMonth)) {
+            for (c = Number(events[b].beginDay); c <= Number(events[b].endDay); c++) {
+                data[c - 1].title.push(events[b].title);
+                data[c - 1].beginYear.push(events[b].beginYear);
+                data[c - 1].beginMonth.push(events[b].beginMonth);
+                data[c - 1].beginDay.push(events[b].beginDay);
+                data[c - 1].endYear.push(events[b].endYear);
+                data[c - 1].endMonth.push(events[b].endMonth);
+                data[c - 1].endDay.push(events[b].endDay);
+                data[c - 1].created.push(events[b].created);
+                data[c - 1].location.push(events[b].location);
+            }
+        } else if((events[b].beginYear == events[b].endYear)) {
+            for (c = Number(events[b].beginDay); c <= numberOfDaysMonth; c++) {
+                data[c - 1].title.push(events[b].title);
+                data[c - 1].beginYear.push(events[b].beginYear);
+                data[c - 1].beginMonth.push(events[b].beginMonth);
+                data[c - 1].beginDay.push(events[b].beginDay);
+                data[c - 1].endYear.push(events[b].endYear);
+                data[c - 1].endMonth.push(events[b].endMonth);
+                data[c - 1].endDay.push(events[b].endDay);
+                data[c - 1].created.push(events[b].created);
+                data[c - 1].location.push(events[b].location);
+            }
         }
     }
 
