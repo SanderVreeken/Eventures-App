@@ -79,7 +79,7 @@ var getDaysInMonthAfter = function(year, month) {
     return new Date(yearNumber, monthNumber, 0).getDate();
 };
 
-// Function in order to find out what weekday is the first day of the month, whereby an integer is returned and Sundayx equals zero.
+// Function in order to find out what weekday is the first day of the month, whereby an integer is returned and Sunday equals zero.
 var getFirstWeekday = function(year, month, day) {
 
     return new Date(year, month - 1, day).getDay();
