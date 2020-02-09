@@ -430,3 +430,7 @@ button:focus {
     margin: 0px;
 }
 
+.list-canvas {
+    overflow-y: scroll;
+}
+
